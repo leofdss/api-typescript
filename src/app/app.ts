@@ -33,12 +33,12 @@ class App {
 
     private errors(): void {
         // catch 404 and forward to error handler
-        this.express.use((req, res, next) => {
+        this.express.use(async (req, res, next) => {
             next(createError(404));
         });
 
         // error handler
-        this.express.use((err: any, req: any, res: any, next: any) => {
+        this.express.use(async (err: any, req: any, res: any, next: any) => {
             // set locals, only providing error in development
             res.locals.message = err.message;
             res.locals.error = req.app.get('env') === 'development' ? err : {};
