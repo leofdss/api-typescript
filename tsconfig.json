@@ -12,29 +12,6 @@
     "strict": true,
     "target": "es6",
     "moduleResolution": "node",
-    "paths": {
-      "@controllers": [
-        "src/app/controllers"
-      ],
-      "@middlewares": [
-        "src/app/middlewares"
-      ],
-      "@models": [
-        "src/app/models"
-      ],
-      "@routes": [
-        "src/app/routes"
-      ],
-      "@assets": [
-        "src/assets"
-      ],
-      "@utils": [
-        "src/utils"
-      ],
-      "@app": [
-        "src/app/app"
-      ]
-    },
     "types": [
       "node"
     ],
