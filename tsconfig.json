@@ -1,0 +1,45 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2015",
+    "paths": {
+      "@controllers": [
+        "src/app/controllers"
+      ],
+      "@middlewares": [
+        "src/app/middlewares"
+      ],
+      "@models": [
+        "src/app/models"
+      ],
+      "@routes": [
+        "src/app/routes"
+      ],
+      "@assets": [
+        "src/assets"
+      ],
+      "@utils": [
+        "src/utils"
+      ],
+      "@app": [
+        "src/app/app"
+      ]
+    },
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2018",
+      "dom"
+    ]
+  }
+}

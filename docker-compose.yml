@@ -1,0 +1,11 @@
+version: "2.1"
+
+services:
+  api:
+    image: api
+    build: .
+    restart: always
+    environment:
+      NODE_ENV: production
+    ports:
+      - 3002:3000
