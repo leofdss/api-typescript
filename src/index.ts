@@ -1,4 +1,4 @@
-import app from '@app';
+import app from './app/app';
 import debug from 'debug';
 import http from 'http';
 import { AddressInfo } from 'net';
@@ -8,7 +8,7 @@ class Server {
   public port: boolean | string | number;
 
   constructor() {
-    this.port = this.normalizePort(process.env.PORT || '3030');
+    this.port = this.normalizePort(process.env.PORT || '3000');
     app.set('port', this.port);
     this.server = http.createServer(app);
     this.server.listen(this.port);
