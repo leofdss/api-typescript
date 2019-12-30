@@ -1,4 +1,4 @@
-# REST server in Node.js, following the Angular project structure.
+# REST server in Node.js + Typescript, following the Angular project structure.
 <p align="center">
   <a href="https://nodejs.org/">
     <img
