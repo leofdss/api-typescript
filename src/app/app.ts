@@ -5,6 +5,7 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import { Request, Response, Router } from 'express';
+import BaseRouter from './routes';
 
 class App {
     public express: express.Application;
@@ -23,6 +24,8 @@ class App {
         this.express.use(cookieParser());
         this.express.use(express.static(path.join(__dirname, 'public')));
         this.express.use(cors());
+
+        this.express.use('/api', BaseRouter);
     }
 
     private routes(): void {
