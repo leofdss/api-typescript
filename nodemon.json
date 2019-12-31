@@ -2,5 +2,5 @@
   "watch": ["src"],
   "ext": "ts",
   "ignore": ["src/public"],
-  "exec": "ts-node ./src --env=development"
+  "exec": "sucrase-node ./src --env=development"
 }
