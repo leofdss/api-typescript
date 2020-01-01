@@ -5,9 +5,7 @@ import { Mongo } from '../controllers';
 import { User } from '../models';
 
 const router = Router();
-const usersDB = () => {
-    return Mongo.client.db().collection('users');
-};
+const usersDB = () => Mongo.client.db().collection('users');
 
 /******************************************************************************
  *                      Get All Users - "GET /api/users/all"
@@ -16,6 +14,7 @@ const usersDB = () => {
 router.get('/all', async (req: Request, res: Response) => {
     try {
         const users = await usersDB().find().toArray();
+        users.map((user) => new User(user));
         res.status(OK).json({ users });
     } catch (err) {
         return res.status(BAD_REQUEST).json({
@@ -30,13 +29,13 @@ router.get('/all', async (req: Request, res: Response) => {
 
 router.post('/add', async (req: Request, res: Response) => {
     try {
-        const { user } = req.body;
+        const user = new User(req.body.user);
         if (!user) {
             return res.status(BAD_REQUEST).json({
                 error: 'BAD_REQUEST'
             });
         }
-        await usersDB().insertOne(new User(user));
+        await usersDB().insertOne(user);
         return res.status(CREATED).end();
     } catch (err) {
         return res.status(BAD_REQUEST).json({
@@ -51,13 +50,13 @@ router.post('/add', async (req: Request, res: Response) => {
 
 router.put('/update', async (req: Request, res: Response) => {
     try {
-        const { user } = req.body;
+        const user = new User(req.body.user);
         if (!user) {
             return res.status(BAD_REQUEST).json({
                 error: 'BAD_REQUEST'
             });
         }
-        await usersDB().replaceOne({ _id: Mongo.generateID(user._id) }, user);
+        await usersDB().replaceOne({ _id: user._id }, user);
         return res.status(OK).end();
     } catch (err) {
         return res.status(BAD_REQUEST).json({
