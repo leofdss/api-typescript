@@ -3,7 +3,6 @@ import { BAD_REQUEST, CREATED, OK } from 'http-status-codes';
 import { ParamsDictionary } from 'express-serve-static-core';
 import { Mongo } from '../controllers';
 import { User } from '../models';
-import env from '../../environments/environment';
 
 const router = Router();
 const usersDB = () => Mongo.client.db().collection('users');
@@ -16,7 +15,7 @@ router.get('/all', async (req: Request, res: Response) => {
     try {
         const users = await usersDB().find().toArray();
         users.map((user) => new User(user));
-        res.status(OK).json({ users });
+        res.status(OK).json(users);
     } catch (err) {
         return res.status(BAD_REQUEST).json({
             error: err.message,
