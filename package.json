@@ -4,12 +4,12 @@
   "scripts": {
     "start": "nodemon --config nodemon.json",
     "dev": "npm start",
-    "tsc": "tsc -p tsconfig.prod.json",
     "prebuild": "node ./config/pre-build",
     "postbuild": "node ./config/pos-build",
-    "build": "npm run tsc",
+    "build": "tsc -p tsconfig.prod.json",
     "prod": "sudo docker-compose -f 'docker-compose.yml' up -d --build",
-    "test": "sucrase-node node_modules/jasmine/bin/jasmine"
+    "test": "sucrase-node node_modules/jasmine/bin/jasmine",
+    "lint": "tslint --project \"tsconfig.json\""
   },
   "dependencies": {
     "cookie-parser": "^1.4.4",

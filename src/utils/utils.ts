@@ -1,5 +1,5 @@
 export class Utils {
-    public static mm = [
+    private static mm = [
         { unit: 'mm', value: 1 },
         { unit: 'pt', value: 2.83465 },
         { unit: 'cm', value: 0.1 },
@@ -7,22 +7,21 @@ export class Utils {
         { unit: 'in', value: 0.0393701 }
     ];
 
+    /** number round */
     public static round(num: number, places = 2): number {
-        if (typeof num === 'number' && typeof places === 'number') {
-            if (!('' + num).includes('e')) {
-                return +(Math.round(Number(num + 'e+' + places)) + 'e-' + places);
-            } else {
-                const arr = ('' + num).split('e');
-                let sig = '';
-                if (+arr[1] + places > 0) {
-                    sig = '+';
-                }
-                return +(Math.round(Number(+arr[0] + 'e' + sig + (+arr[1] + places))) + 'e-' + places);
+        if (!(String(num)).includes('e')) {
+            return +(Math.round(Number(num + 'e+' + places)) + 'e-' + places);
+        } else {
+            const arr = ('' + num).split('e');
+            let sig = '';
+            if (+arr[1] + places > 0) {
+                sig = '+';
             }
+            return +(Math.round(Number(+arr[0] + 'e' + sig + (+arr[1] + places))) + 'e-' + places);
         }
-        return NaN;
     }
 
+    /** error handling for JSON.parse */
     public static parse(value: string): object {
         try {
             return JSON.parse(value);
@@ -31,6 +30,10 @@ export class Utils {
         }
     }
 
+    /**
+     * conversion units are pt, mm, cm, in, px.
+     * returns value with 4 decimal places rounding.
+     */
     public static convertUnit(value: number, unit: string, toUnit: string) {
         const objUnit = this.mm[this.mm.findIndex((obj) => obj.unit === unit)];
         const objToUnit = this.mm[this.mm.findIndex((obj) => obj.unit === toUnit)];
@@ -40,6 +43,7 @@ export class Utils {
         return NaN;
     }
 
+    /** text indentation */
     public static splitTextToSize(text: string, width: number, fontSize = 7): string[] {
         if (typeof text === 'string' && typeof width === 'number' && typeof fontSize === 'number') {
             let result = new Array<string>();
@@ -57,9 +61,10 @@ export class Utils {
         return [];
     }
 
-    public static isEquivalent(a: any, b: any): boolean {
-        const aKeys = Object.keys(a) as string[];
-        const bKeys = Object.keys(b) as string[];
+    /** object checks are equivalent */
+    public static toEqual(a: any, b: any): boolean {
+        const aKeys = Object.keys(a);
+        const bKeys = Object.keys(b);
 
         if (aKeys.length !== bKeys.length) {
             return false;
