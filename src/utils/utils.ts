@@ -56,4 +56,20 @@ export class Utils {
         }
         return [];
     }
+
+    public static isEquivalent(a: any, b: any): boolean {
+        const aKeys = Object.keys(a) as string[];
+        const bKeys = Object.keys(b) as string[];
+
+        if (aKeys.length !== bKeys.length) {
+            return false;
+        }
+
+        for (const key of aKeys) {
+            if (JSON.stringify(a[key]) !== JSON.stringify(b[key])) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
