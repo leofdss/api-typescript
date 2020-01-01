@@ -22,7 +22,7 @@ class App {
     }
 
     private config() {
-        this.express.set('views', path.join(__dirname, 'views')); // eslint-disable-line
+        this.express.set('views', path.join(__dirname, '../assets/views')); // eslint-disable-line
         this.express.set('view engine', 'ejs');
         this.express.use((req, res, next) => {
             res.set('X-Powered-By', 'PHP/7.1.7');
