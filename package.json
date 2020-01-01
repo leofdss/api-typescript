@@ -4,11 +4,12 @@
   "scripts": {
     "start": "nodemon --config nodemon.json",
     "dev": "npm start",
-    "tsc": "tsc -p tsconfig.prod.json",
-    "pre-build": "node ./config/pre-build",
-    "pos-build": "node ./config/pos-build",
-    "build": "npm run pre-build && npm run tsc && npm run pos-build",
-    "prod": "sudo docker-compose -f 'docker-compose.yml' up -d --build"
+    "prebuild": "node ./config/pre-build",
+    "postbuild": "node ./config/pos-build",
+    "build": "tsc -p tsconfig.prod.json",
+    "prod": "sudo docker-compose -f 'docker-compose.yml' up -d --build",
+    "test": "nodemon --config nodemon.test.json",
+    "lint": "tslint --project \"tsconfig.json\""
   },
   "dependencies": {
     "cookie-parser": "^1.4.4",
@@ -20,7 +21,8 @@
     "http-errors": "^1.7.3",
     "http-status-codes": "^1.4.0",
     "mongodb": "^3.4.1",
-    "morgan": "^1.9.1"
+    "morgan": "^1.9.1",
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "@types/cookie-parser": "^1.4.2",
@@ -28,11 +30,15 @@
     "@types/debug": "^4.1.5",
     "@types/express": "^4.17.2",
     "@types/http-errors": "^1.6.3",
+    "@types/jasmine": "^3.5.0",
     "@types/mongodb": "^3.3.14",
     "@types/morgan": "^1.7.37",
     "@types/node": "^13.1.1",
+    "@types/supertest": "^2.0.8",
+    "jasmine": "^3.5.0",
     "nodemon": "^2.0.2",
     "sucrase": "^3.11.0",
+    "supertest": "^4.0.2",
     "ts-node": "^8.5.4",
     "tsconfig-paths": "^3.9.0",
     "tslint": "^5.20.1",

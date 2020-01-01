@@ -1,8 +1,8 @@
 export default {
-    production: true,
-    test: false,
+    production: false,
+    test: true,
     directory: './uploads',
-    database: 'mongodb://localhost:27017/react',
+    database: 'mongodb://localhost:27017/test',
     config: {
         useNewUrlParser: true,
         useUnifiedTopology: true,

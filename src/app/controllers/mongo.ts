@@ -22,16 +22,14 @@ export class Mongo {
     }
 
     public static generateID(value: string): ObjectId | null {
-        let id;
         try {
-            id = new ObjectId(value);
+            if (value) {
+                value = String(value);
+            }
+            return new ObjectId(value);
         } catch (error) {
-            return error;
+            return null;
         }
-        if (id) {
-            return id;
-        }
-        return null;
     }
 
     public static convertQuery(query: any): object {

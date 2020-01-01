@@ -8,12 +8,15 @@ import { Request, Response, Router } from 'express';
 import BaseRouter from './routes';
 import { Mongo } from './controllers';
 import env from '../environments/environment';
+import envProd from '../environments/environment.prod';
+import envTest from '../environments/environment.test';
 
 class App {
     public express: express.Application;
     public constructor() {
         this.express = express();
 
+        this.onEnv(process.env.NODE_ENV);
         this.config();
         this.middlewares();
         this.database();
@@ -21,8 +24,22 @@ class App {
         this.errors();
     }
 
+    private onEnv(val: string | undefined) {
+        if (val === 'production') {
+            const props = Object.keys(envProd);
+            for (const prop of props) {
+                (env as any)[prop] = (envProd as any)[prop];
+            }
+        } else if (val === 'test') {
+            const props = Object.keys(envTest);
+            for (const prop of props) {
+                (env as any)[prop] = (envTest as any)[prop];
+            }
+        }
+    }
+
     private config() {
-        this.express.set('views', path.join(__dirname, 'views')); // eslint-disable-line
+        this.express.set('views', path.join(__dirname, '../assets/views')); // eslint-disable-line
         this.express.set('view engine', 'ejs');
         this.express.use((req, res, next) => {
             res.set('X-Powered-By', 'PHP/7.1.7');
@@ -38,7 +55,9 @@ class App {
     }
 
     private middlewares(): void {
-        this.express.use(logger('dev'));
+        if (!env.production && !env.test) {
+            this.express.use(logger('dev'));
+        }
         this.express.use(express.json());
         this.express.use(express.urlencoded({ extended: false }));
         this.express.use(cookieParser());

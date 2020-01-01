@@ -1,0 +1,7 @@
+{
+  "watch": ["src"],
+  "ext": "ts",
+  "ignore": ["spec/support"],
+  "exec": "NODE_ENV=test sucrase-node node_modules/jasmine/bin/jasmine",
+  "delay": "500"
+}
