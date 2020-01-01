@@ -2,10 +2,11 @@ import { Request, Response, Router } from 'express';
 import { BAD_REQUEST, CREATED, OK } from 'http-status-codes';
 import { ParamsDictionary } from 'express-serve-static-core';
 import { Mongo } from '../controllers';
+import { User } from '../models';
 
 const router = Router();
 const usersDB = () => {
-    return Mongo.client.db('users').collection('users');
+    return Mongo.client.db().collection('users');
 };
 
 /******************************************************************************
@@ -35,7 +36,7 @@ router.post('/add', async (req: Request, res: Response) => {
                 error: 'BAD_REQUEST'
             });
         }
-        await usersDB().insertOne(user);
+        await usersDB().insertOne(new User(user));
         return res.status(CREATED).end();
     } catch (err) {
         return res.status(BAD_REQUEST).json({
