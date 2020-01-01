@@ -8,7 +8,7 @@
     "postbuild": "node ./config/pos-build",
     "build": "tsc -p tsconfig.prod.json",
     "prod": "sudo docker-compose -f 'docker-compose.yml' up -d --build",
-    "test": "sucrase-node node_modules/jasmine/bin/jasmine",
+    "test": "nodemon --config nodemon.test.json",
     "lint": "tslint --project \"tsconfig.json\""
   },
   "dependencies": {

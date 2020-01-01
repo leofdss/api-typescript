@@ -1,6 +1,7 @@
 {
   "watch": ["src"],
   "ext": "ts",
-  "ignore": ["src/public"],
-  "exec": "sucrase-node ./src --env=development"
+  "ignore": ["src/public", "*.spec.ts"],
+  "exec": "sucrase-node ./src --env=development",
+  "delay": "500"
 }
