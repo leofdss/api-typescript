@@ -1,8 +1,7 @@
-describe('util', () => {
-    it('test', () => {
-        expect(true).toBe(true);
-    });
-    it('test2', () => {
-        expect(false).toBe(true);
+import { Utils } from './utils';
+
+describe('Utils', () => {
+    it('parce', () => {
+        expect(Utils.parse(`{"a":"b"}`)).toEqual({a: 'b'});
     });
 });

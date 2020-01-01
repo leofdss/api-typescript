@@ -9,7 +9,7 @@
     "postbuild": "node ./config/pos-build",
     "build": "npm run tsc",
     "prod": "sudo docker-compose -f 'docker-compose.yml' up -d --build",
-    "test": "node node_modules/jasmine/bin/jasmine"
+    "test": "sucrase-node node_modules/jasmine/bin/jasmine"
   },
   "dependencies": {
     "cookie-parser": "^1.4.4",
@@ -37,6 +37,7 @@
     "jasmine": "^3.5.0",
     "nodemon": "^2.0.2",
     "sucrase": "^3.11.0",
+    "supertest": "^4.0.2",
     "ts-node": "^8.5.4",
     "tsconfig-paths": "^3.9.0",
     "tslint": "^5.20.1",
