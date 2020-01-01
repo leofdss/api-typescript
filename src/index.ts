@@ -14,6 +14,7 @@ class Server {
     this.server.listen(this.port);
     this.server.on('error', this.onError);
     this.server.on('listening', () => {
+      console.log(`Server started to port ${this.port}`);
       const addr = this.server.address() as AddressInfo;
       const bind = typeof addr === 'string'
         ? 'pipe ' + addr
