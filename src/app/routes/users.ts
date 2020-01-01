@@ -3,6 +3,7 @@ import { BAD_REQUEST, CREATED, OK } from 'http-status-codes';
 import { ParamsDictionary } from 'express-serve-static-core';
 import { Mongo } from '../controllers';
 import { User } from '../models';
+import env from '../../environments/environment';
 
 const router = Router();
 const usersDB = () => Mongo.client.db().collection('users');
