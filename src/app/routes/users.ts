@@ -14,8 +14,7 @@ const usersDB = () => Mongo.client.db().collection('users');
 router.get('/all', async (req: Request, res: Response) => {
     try {
         const users = await usersDB().find().toArray();
-        users.map((user) => new User(user));
-        res.status(OK).json(users);
+        res.status(OK).json(users.map((user) => new User(user)));
     } catch (err) {
         return res.status(BAD_REQUEST).json({
             error: err.message,
