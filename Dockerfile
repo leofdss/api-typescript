@@ -9,6 +9,6 @@ RUN npm run build
 EXPOSE 3030
 ENV PORT 3030
 ENV NODE_ENV production
-CMD forever -r module-alias/register ./dist/index.js
+CMD forever ./dist/index.js
 
 # sudo docker-compose -f "docker-compose.yml" up -d --build
