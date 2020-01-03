@@ -5,7 +5,16 @@
     "no-console": false,
     "member-ordering": false,
     "object-literal-sort-keys": false,
-    "ordered-imports": false,
+    "ordered-imports": [
+      true,
+      {
+        "import-sources-order": "lowercase-last",
+        "named-imports-order": "lowercase-first",
+        "module-source-path": "full",
+        "grouped-imports": true
+        
+      }
+    ],
     "quotemark": [
       true,
       "single"

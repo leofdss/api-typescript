@@ -1,6 +1,7 @@
 import { Request, Response, Router } from 'express';
-import { BAD_REQUEST, CREATED, OK } from 'http-status-codes';
 import { ParamsDictionary } from 'express-serve-static-core';
+import { BAD_REQUEST, CREATED, OK } from 'http-status-codes';
+
 import { Mongo } from '../controllers';
 import { User } from '../models';
 

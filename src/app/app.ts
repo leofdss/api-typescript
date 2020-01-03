@@ -1,16 +1,18 @@
-import createError from 'http-errors';
-import express from 'express';
-import cors from 'cors';
-import path from 'path';
-import cookieParser from 'cookie-parser';
-import logger from 'morgan';
-import { Request, Response, Router } from 'express';
 import compression from 'compression';
-import BaseRouter from './routes';
-import { Mongo } from './controllers';
+import cookieParser from 'cookie-parser';
+import cors from 'cors';
+import express from 'express';
+import { Request, Response, Router } from 'express';
+import createError from 'http-errors';
+import logger from 'morgan';
+import path from 'path';
+
 import env from '../environments/environment';
 import envProd from '../environments/environment.prod';
 import envTest from '../environments/environment.test';
+
+import { Mongo } from './controllers';
+import BaseRouter from './routes';
 
 class App {
     public express: express.Application;

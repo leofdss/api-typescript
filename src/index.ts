@@ -1,7 +1,8 @@
-import app from './app/app';
 import debug from 'debug';
 import http from 'http';
 import { AddressInfo } from 'net';
+
+import app from './app/app';
 
 class Server {
   public server: http.Server;
