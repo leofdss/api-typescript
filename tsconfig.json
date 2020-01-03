@@ -6,6 +6,7 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "module": "commonjs",
+    "rootDir": "src",
     "outDir": "dist",
     "removeComments": true,
     "sourceMap": true,

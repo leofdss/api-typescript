@@ -2,14 +2,14 @@
   "name": "api-typescript",
   "version": "0.0.0",
   "scripts": {
-    "start": "nodemon --config nodemon.json",
+    "start": "nodemon --config ./config/nodemon/nodemon.json",
     "dev": "npm start",
-    "test": "nodemon --config nodemon.test.json",
+    "test": "nodemon --config ./config/nodemon/nodemon.test.json",
     "lint": "tslint --project \"tsconfig.json\"",
-    "debug": "nodemon --config nodemon.debug.json",
-    "prebuild": "node ./config/pre-build",
-    "postbuild": "node ./config/pos-build",
-    "build": "tsc -p tsconfig.prod.json",
+    "debug": "nodemon --config ./config/nodemon/nodemon.debug.json",
+    "prebuild": "node ./config/build/pre-build",
+    "postbuild": "node ./config/build/pos-build",
+    "build": "tsc -p tsconfig.prod.json ",
     "prod": "sudo docker-compose -f 'docker-compose.yml' up -d --build"
   },
   "dependencies": {
@@ -41,7 +41,6 @@
     "sucrase": "^3.11.0",
     "supertest": "^4.0.2",
     "ts-node": "^8.5.4",
-    "tsconfig-paths": "^3.9.0",
     "tslint": "^5.20.1",
     "typescript": "^3.7.4"
   }
