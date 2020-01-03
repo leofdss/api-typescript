@@ -10,8 +10,7 @@
     "prebuild": "node ./config/build/pre-build",
     "postbuild": "node ./config/build/pos-build",
     "build": "tsc -p tsconfig.prod.json ",
-    "prod": "sudo docker-compose -f 'docker-compose.yml' up -d --build",
-    "webpack": "webpack ./dist"
+    "prod": "sudo docker-compose -f 'docker-compose.yml' up -d --build"
   },
   "dependencies": {
     "cookie-parser": "^1.4.4",

@@ -34,18 +34,24 @@ async function loading(path) {
 }
 
 function replaceFile(path, file) {
-    let fileJS = fs.readFileSync(genetatePath(path.concat([file])), 'utf8').split('require');
-    const regex = /require\("(.*)"\)/
+    const data = fs.readFileSync(genetatePath(path.concat([file])), 'utf8');
+    let fileJS = data.split('require');
+    const regex = /require\("(.*)"\)/;
     for (let i = 1; i < fileJS.length; i++) {
         stringImport = regex.exec("require" + fileJS[i]);
         if (stringImport) {
             const newPath = String(`("${replacePath(genetatePath(path.concat([file])), stringImport[1])}")`);
             const oldPath = String(`("${stringImport[1]}")`);
 
-            fileJS[i] = fileJS[i].replace(oldPath, newPath);
+            if (newPath !== oldPath) {
+                fileJS[i] = fileJS[i].replace(oldPath, newPath);
+            }
         }
     }
-    fs.writeFileSync(genetatePath(path.concat([file])), fileJS.join('require'));
+    const result = fileJS.join('require');
+    if (result !== data) {
+        fs.writeFileSync(genetatePath(path.concat([file])), fileJS.join('require'));
+    }
 }
 
 function replacePath(filePath, importPath) {
