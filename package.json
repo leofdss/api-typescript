@@ -4,12 +4,13 @@
   "scripts": {
     "start": "nodemon --config nodemon.json",
     "dev": "npm start",
+    "test": "nodemon --config nodemon.test.json",
+    "lint": "tslint --project \"tsconfig.json\"",
+    "debug": "nodemon --config nodemon.debug.json",
     "prebuild": "node ./config/pre-build",
     "postbuild": "node ./config/pos-build",
     "build": "tsc -p tsconfig.prod.json",
-    "prod": "sudo docker-compose -f 'docker-compose.yml' up -d --build",
-    "test": "nodemon --config nodemon.test.json",
-    "lint": "tslint --project \"tsconfig.json\""
+    "prod": "sudo docker-compose -f 'docker-compose.yml' up -d --build"
   },
   "dependencies": {
     "cookie-parser": "^1.4.4",
