@@ -5,6 +5,7 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import { Request, Response, Router } from 'express';
+import compression from 'compression';
 import BaseRouter from './routes';
 import { Mongo } from './controllers';
 import env from '../environments/environment';
@@ -63,6 +64,7 @@ class App {
         this.express.use(cookieParser());
         this.express.use(express.static(path.join(__dirname, 'public')));
         this.express.use(cors());
+        this.express.use(compression());
 
         this.express.use('/', BaseRouter);
     }
